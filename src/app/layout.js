@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
 		<html lang='en'>
 			<body
 				suppressHydrationWarning={true}
-				className={`${poppins} ${montserrat} font-poppins font-normal text-sm`}>
+				className={`${poppins} ${montserrat} font-montserrat font-normal text-sm`}>
 				{children}
 			</body>
 		</html>

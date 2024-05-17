@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
 	content: [
 		'./src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,6 +13,8 @@ module.exports = {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic':
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+				'custom-gradient':
+					'linear-gradient(90deg, #00B09B 0%, #4FF68E 100%)',
 			},
 			colors: {
 				'brand-black': '#111111',
@@ -43,14 +47,43 @@ module.exports = {
 				'neutral-800': '#15294B',
 				'error-500': '#EF4444',
 				'brand-green-50': '#E8F7F0',
-				'brand-linear-gradient': `linear-gradient(90deg, #00B09B 0%, #4FF68E 100%)`
-
+				'brand-linear-gradient': `linear-gradient(90deg, #00B09B 0%, #4FF68E 100%)`,
 			},
 			fontFamily: {
 				poppins: ['var(--font-poppins)'],
 				montserrat: ['var(--font-montserrat)'],
 			},
+			screens: {
+				xs: '480px',
+				// => @media (min-width: 480px) { ... }
+
+				sm: '767px',
+				// => @media (min-width: 767px) { ... }
+
+				md: '1024px',
+				// => @media (min-width: 1024px) { ... }
+
+				lg: '1280px',
+				// => @media (min-width: 1280px) { ... }
+
+				xl: '1536px',
+				// => @media (min-width: 1280px) { ... }
+			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		plugin(function ({ addUtilities }) {
+			const newUtilities = {
+				'.text-gradient': {
+					'background-clip': 'text',
+					'-webkit-background-clip': 'text',
+					color: 'transparent',
+					'background-image':
+						'linear-gradient(90deg, #00B09B 0%, #4FF68E 100%)',
+				},
+			};
+			addUtilities(newUtilities, ['responsive', 'hover']);
+		}),
+		require('tailwind-scrollbar-hide'),
+	],
 };
