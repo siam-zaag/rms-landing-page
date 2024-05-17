@@ -10,6 +10,7 @@ export default function RootLayout({ children }) {
   return (
 		<html lang='en'>
 			<body
+				suppressHydrationWarning={true}
 				className={`${poppins} ${montserrat} font-poppins font-normal text-sm`}>
 				{children}
 			</body>
