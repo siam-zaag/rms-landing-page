@@ -1,12 +1,12 @@
-import Footer from '@/components/Footer/Footer';
 import Navbar from '@/components/Navbar/Navbar';
+import Section from '@/sections';
 
 const Primary = ({ children }) => {
 	return (
 		<div>
-			<Navbar />
+			<Navbar/>
 			{children}
-			<Footer/>
+			<Section.Footer />
 		</div>
 	);
 };
